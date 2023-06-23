@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sty.scss" />
+    <script src="https://kit.fontawesome.com/283b2706d9.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1><%=name%></h1>
+    </div>
+
+    <div class="container">
+
+        <form class="item" action="/addNotes" method="post">
+            <input type="text" name="newNote" id="newNote" placeholder="Add Task" />
+            <button type="submit" name="button" class="input-btn">+</button>
+        </form>
+    
+        <table class="table">
+            <tbody>
+                <% note.map((i, index)=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= index+1 %>
+                        </th>
+                        <td>
+                            <%= i.body %>
+                        </td>
+                        <td>
+                            <form action="<%= /deleteNote/ +i.id%>" method="POST">
+                                <button type="submit" class="dlt-btn"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+    </div>
+</body>
+
+</html>
